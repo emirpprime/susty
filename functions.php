@@ -127,24 +127,36 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+/**
+ * Add rewrite for menu to serve our menu template.
+ */
 function susty_nav_rewrite_rule() {
 	add_rewrite_rule( 'menu', 'index.php?menu=true', 'top' );
 }
 add_action( 'init', 'susty_nav_rewrite_rule' );
-
+/**
+ * Register query var for menu.
+ *
+ * @param  array $vars Existing query vars.
+ * @return array       Modified query vars.
+ */
 function susty_register_query_var( $vars ) {
 	$vars[] = 'menu';
-
 	return $vars;
 }
 add_filter( 'query_vars', 'susty_register_query_var' );
-
-add_filter( 'template_include', function( $path ) {
-	if ( get_query_var( 'menu' ) ) {
-		return get_template_directory() . '/menu.php';
+/**
+ * Serve custom menu template when menu var queried.
+ */
+add_filter(
+	'template_include',
+	function( $path ) {
+		if ( get_query_var( 'menu' ) ) {
+			return get_template_directory() . '/menu.php';
+		}
+		return $path;
 	}
-	return $path;
-});
+);
 
 
 /**

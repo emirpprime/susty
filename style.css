@@ -859,10 +859,6 @@ header#masthead h1, header#masthead p {
 	margin: 0;
 }
 
-header#masthead a {
-	border-bottom: unset;
-}
-
 header#masthead > a {
 	font-weight: bold;
 }

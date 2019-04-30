@@ -133,7 +133,6 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 function susty_nav_rewrite_rule() {
 	add_rewrite_rule( 'menu', 'index.php?menu=true', 'top' );
 }
-
 add_action( 'init', 'susty_nav_rewrite_rule' );
 
 function susty_register_query_var( $vars ) {
@@ -141,7 +140,6 @@ function susty_register_query_var( $vars ) {
 
 	return $vars;
 }
-
 add_filter( 'query_vars', 'susty_register_query_var' );
 
 add_filter( 'template_include', function( $path ) {

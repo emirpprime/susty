@@ -601,7 +601,7 @@ textarea {
 a {
 	color: rgb(4, 4, 2);
 	text-decoration: none;
-	border-bottom: 0.2em solid transparent;
+	border-bottom: 0.1em dotted;
 }
 
 a#susty-back-link {
@@ -896,7 +896,6 @@ svg * {
 
 article a, nav a {
 	background: rgb(252, 248, 243) none repeat scroll 0% 0%;
-	border-bottom: 0.1em dotted;
 	line-height: 1.6em;
 }
 

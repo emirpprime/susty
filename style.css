@@ -906,6 +906,10 @@ article > header > h1, article > header > h2 {
 }
 
 .entry-meta {
+	padding: 0.2em;
+	border: 1px solid rgb(4, 4, 2);
+	border-left: 0;
+	border-right: 0;
 	color: rgb(4, 4, 2);
 }
 

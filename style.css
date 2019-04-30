@@ -875,6 +875,10 @@ header#masthead > a > svg {
 	margin-right: .5em;
 }
 
+.logo a {
+	border: 0 none;
+}
+
 .logo svg {
 	width: 2.4em;
 	height: 2.4em;

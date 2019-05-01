@@ -993,3 +993,77 @@ footer#colophon {
 	padding: 0 1em;
 	font-size: .75em;
 }
+
+
+
+/*--------------------------------------------------------------
+## Dark mode support
+--------------------------------------------------------------*/
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #111;
+		color: #eee;
+	}
+
+	a {
+		color: #eee;
+	}
+
+	a:visited {
+		color: #ccc
+	}
+
+	pre {
+		background-color: #000;
+		border:1px solid #ccc;
+	}
+
+	input,textarea {
+		background-color: #333;
+		color: #eee;
+	}
+
+
+
+	.screen-reader-text:focus, .screen-reader-text:active {
+		z-index: 100000;
+		/* Above WP toolbar. */
+		background-color: #f1f1f1;
+		font-weight: bold;
+		color: #000;
+		text-decoration: underline;
+		clip: auto !important;
+		clip-path: none;
+		display: block;
+		height: auto;
+		left: 0;
+		top: 0;
+		width: auto;
+		padding: 1em;
+		outline: none;
+	}
+
+	@media screen and (max-width: 700px) {
+		.skip-link {
+			background-color: #f1f1f1;
+			color: #000;
+		}
+	}
+
+	.logo svg {
+		stroke: #eee;
+	}
+
+	.entry-meta {
+		border-color: #eee;
+		color: #eee;
+	}
+
+	.entry-meta a {
+		color: #eee;
+	}
+
+	article a, nav a {
+		background-color: #000
+	}
+}

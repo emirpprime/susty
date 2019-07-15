@@ -53,23 +53,26 @@ endif;
 
 if ( ! function_exists( 'susty_wp_entry_footer' ) ) :
 	/**
-	 * Prints HTML with meta information for the categories, tags and comments.
+	 * Prints HTML with meta information for the taxonomies and comments.
 	 */
 	function susty_wp_entry_footer() {
-		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'susty' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'susty' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
 
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'susty' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'susty' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+		$all_taxonomies = get_object_taxonomies( get_post_type(),'objects' );
+		if ( ! is_wp_error( $all_taxonomies ) && ! empty( $all_taxonomies ) ) {
+			foreach ( $all_taxonomies as $a_taxonomy ) {
+				$this_taxonomy_list = '';
+				/* translators: used between list items, there is a space after the comma */
+				$this_taxonomy_list = get_the_term_list( get_the_id(), $a_taxonomy->name, '', esc_html_x( ', ', 'list item separator', 'susty' ) );
+				if ( $this_taxonomy_list ) {
+					/* translators: 2: plural name of taxonomy. */
+					/* translators: 3: list of categories. */
+					printf(
+						'<span class="%1$s-links">' . esc_html__( '%2$s: %3$s', 'susty' ) . '</span>. ',
+						$a_taxonomy->slug,
+						$a_taxonomy->label,
+						$this_taxonomy_list
+					); // WPCS: XSS OK.
+				}
 			}
 		}
 
